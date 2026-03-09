@@ -462,7 +462,7 @@ function drawScaleVertical(id, value, showCoin, exMode) {
 
   // ── COLUMN HEADERS ──
   ctx.font = 'bold 8.5px "Space Mono",monospace';
-  ctx.textAlign = 'center'; ctx.fillStyle = '#2e4870';
+  ctx.textAlign = 'center'; ctx.fillStyle = '#7a9ab8';
   ctx.fillText('ESKALA NAGUSIA', 78, PAD_TOP - 16);
   ctx.fillText('NONIUS  (50 zatiki)', W-78, PAD_TOP - 16);
 
@@ -470,55 +470,53 @@ function drawScaleVertical(id, value, showCoin, exMode) {
   const MX = 136;   // main scale right edge (ticks go left)
   const VX = W-136; // vernier left edge (ticks go right)
 
-  ctx.strokeStyle = '#1e3050'; ctx.lineWidth = 2;
+  ctx.strokeStyle = '#4a6a90'; ctx.lineWidth = 2;
   ctx.beginPath(); ctx.moveTo(MX, PAD_TOP-8); ctx.lineTo(MX, Y0+6); ctx.stroke();
-  ctx.strokeStyle = '#1e3050'; ctx.lineWidth = 2;
+  ctx.strokeStyle = '#4a6a90'; ctx.lineWidth = 2;
   ctx.beginPath(); ctx.moveTo(VX, PAD_TOP-8); ctx.lineTo(VX, Y0+6); ctx.stroke();
 
   // ── MAIN SCALE TICKS ──
-  // Line n at y = Y0 + (value-n)*PXV  (n>value → y<Y0 = above; n<value → y>Y0 = below)
   for(let n = Math.max(0, flr-2); n <= flr+55; n++) {
     const y = Y0 + (value - n) * PXV;
     if(y < PAD_TOP - 12 || y > H - PAD_BOT + 8) continue;
 
     const is10 = n%10===0, is5 = n%5===0, isFlr = n===flr;
-    let tLen=6, col='#1a2a40', lw=0.7;
-    if(is10)   { tLen=32; col='#5a7090'; lw=1.8; }
-    else if(is5){ tLen=20; col='#2e4a68'; lw=1.2; }
-    else if(isFlr){ tLen=26; col='rgba(245,158,11,0.6)'; lw=1.5; }
+    let tLen=8, col='#3a5068', lw=1.0;
+    if(is10)    { tLen=34; col='#aec8e0'; lw=2.2; }
+    else if(is5){ tLen=22; col='#6a90b0'; lw=1.6; }
+    else if(isFlr){ tLen=28; col='rgba(245,158,11,0.8)'; lw=2.0; }
 
     ctx.strokeStyle=col; ctx.lineWidth=lw;
     ctx.beginPath(); ctx.moveTo(MX, y); ctx.lineTo(MX-tLen, y); ctx.stroke();
 
     if(is10 || isFlr) {
-      ctx.fillStyle = isFlr ? 'rgba(245,158,11,0.7)' : '#5a7090';
-      ctx.font = isFlr ? 'bold 10px "Space Mono",monospace' : '9px "Space Mono",monospace';
+      ctx.fillStyle = isFlr ? 'rgba(245,158,11,0.9)' : '#aec8e0';
+      ctx.font = isFlr ? 'bold 11px "Space Mono",monospace' : 'bold 10px "Space Mono",monospace';
       ctx.textAlign = 'right';
-      ctx.fillText(n, MX-36, y+3.5);
+      ctx.fillText(n, MX-38, y+3.5);
     }
   }
 
   // ── VERNIER TICKS ──
-  // Line k at y = Y0 - k * 0.98 * PXV  (going UP)
   for(let k=0; k<=50; k++) {
     const y = Y0 - k * 0.98 * PXV;
     if(y < PAD_TOP - 12) break;
 
     const is10=k%10===0, is5=k%5===0;
     const isCoin = k===coin;
-    let tLen=6, col='#1a2a40', lw=0.7;
-    if(is10)    { tLen=32; col='#5a7090'; lw=1.8; }
-    else if(is5){ tLen=20; col='#2e4a68'; lw=1.2; }
-    if(isCoin && showCoin){ tLen=36; col='#f59e0b'; lw=3; }
+    let tLen=8, col='#3a5068', lw=1.0;
+    if(is10)    { tLen=34; col='#aec8e0'; lw=2.2; }
+    else if(is5){ tLen=22; col='#6a90b0'; lw=1.6; }
+    if(isCoin && showCoin){ tLen=38; col='#f59e0b'; lw=3.5; }
 
     ctx.strokeStyle=col; ctx.lineWidth=lw;
     ctx.beginPath(); ctx.moveTo(VX, y); ctx.lineTo(VX+tLen, y); ctx.stroke();
 
-    if(is10 || (isCoin && showCoin)) {
-      ctx.fillStyle = (isCoin && showCoin) ? '#f59e0b' : '#5a7090';
-      ctx.font = (isCoin && showCoin) ? 'bold 11px "Space Mono",monospace' : '9px "Space Mono",monospace';
+    if(is10 || is5 || (isCoin && showCoin)) {
+      ctx.fillStyle = (isCoin && showCoin) ? '#f59e0b' : (is10 ? '#aec8e0' : '#6a90b0');
+      ctx.font = (isCoin && showCoin) ? 'bold 12px "Space Mono",monospace' : (is10 ? 'bold 10px "Space Mono",monospace' : '9px "Space Mono",monospace');
       ctx.textAlign = 'left';
-      ctx.fillText(k, VX+40, y+3.5);
+      ctx.fillText(k, VX+42, y+3.5);
     }
   }
 
@@ -539,11 +537,13 @@ function drawScaleVertical(id, value, showCoin, exMode) {
   ctx.lineTo(MX+14, Y0+7);
   ctx.fill();
 
-  // Value label on 0-line
-  ctx.fillStyle = '#f59e0b';
-  ctx.font = 'bold 11px "Space Mono",monospace';
-  ctx.textAlign = 'center';
-  ctx.fillText(value.toFixed(2)+' mm', arrowX, Y0 - 10);
+  // Value label on 0-line — only show in simulator, hide in exercise mode
+  if(!exMode) {
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = 'bold 11px "Space Mono",monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(value.toFixed(2)+' mm', arrowX, Y0 - 10);
+  }
 
   // ── COINCIDENT LINE HIGHLIGHT ──
   if(showCoin && coin > 0) {
@@ -641,7 +641,7 @@ function genVal(level) {
 function nextExercise() {
   answered = false;
   exVal = genVal(score.level);
-  drawScaleVertical('exCanvas', exVal, false, true);
+  drawScaleVertical('exCanvas', exVal, true, true);
 
   const inp = document.getElementById('ansInput');
   inp.value=''; inp.className='aInput'; inp.disabled=false;
@@ -676,10 +676,9 @@ async function checkAnswer() {
   inp.className='aInput '+(ok?'ok':'fail');
   inp.disabled=true;
   document.getElementById('subBtn').style.display='none';
-  document.getElementById('nxtBtn').style.display='';
+  document.getElementById('nxtBtn').style.display='inline-block';
 
   drawScaleVertical('exCanvas', exVal, true, false);
-
   score.total++;
   score.history.unshift({v:exVal,s:val,ok,lvl:score.level});
   if(score.history.length>25) score.history.pop();
