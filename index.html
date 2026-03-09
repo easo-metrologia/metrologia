@@ -6,141 +6,112 @@
 <title>Altueren Kalibrea — Egokitze Ikaskuntza</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:      #0c1018;
-  --bg2:     #141a24;
-  --bg3:     #1c2333;
-  --bg4:     #242d40;
-  --amber:   #f59e0b;
-  --amberD:  #78490a;
-  --green:   #22c55e;
-  --red:     #f43f5e;
-  --blue:    #38bdf8;
-  --text:    #cdd5e0;
-  --text2:   #6e7f98;
-  --text3:   #3a4558;
-  --border:  #1e2a3a;
-  --r:       8px;
+:root{
+  --bg:#0c1018;--bg2:#141a24;--bg3:#1c2333;--bg4:#242d40;
+  --amber:#f59e0b;--amberD:#78490a;--green:#22c55e;--red:#f43f5e;
+  --blue:#38bdf8;--text:#cdd5e0;--text2:#6e7f98;--text3:#3a4558;--border:#1e2a3a;--r:8px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Space Mono',monospace;min-height:100vh;overflow-x:hidden}
 
-/* ── HEADER ─────────────────────────────── */
 header{
   background:var(--bg2);border-bottom:1px solid var(--border);
   display:flex;align-items:center;gap:24px;padding:0 28px;height:60px;
   position:sticky;top:0;z-index:100;backdrop-filter:blur(6px)
 }
-.logo{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:17px;
-  color:var(--amber);white-space:nowrap;letter-spacing:-.3px
-}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:var(--amber);white-space:nowrap;letter-spacing:-.3px}
 .logo em{color:var(--text2);font-style:normal;font-weight:600}
 nav{display:flex;gap:2px;flex:1}
 nav button{
-  background:none;border:none;color:var(--text2);
-  font-family:'Space Mono',monospace;font-size:11px;
-  padding:7px 14px;cursor:pointer;border-radius:6px;
-  transition:all .18s;text-transform:uppercase;letter-spacing:1px
+  background:none;border:none;color:var(--text2);font-family:'Space Mono',monospace;font-size:11px;
+  padding:7px 14px;cursor:pointer;border-radius:6px;transition:all .18s;text-transform:uppercase;letter-spacing:1px
 }
 nav button:hover{background:var(--bg3);color:var(--text)}
 nav button.active{background:var(--bg3);color:var(--amber)}
-.hbadge{
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:20px;padding:4px 14px;font-size:10px;
-  color:var(--text2);white-space:nowrap
-}
+.hbadge{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:10px;color:var(--text2);white-space:nowrap}
 .hbadge b{color:var(--amber)}
 
-/* ── MAIN ───────────────────────────────── */
-main{max-width:920px;margin:0 auto;padding:28px 20px}
+main{max-width:960px;margin:0 auto;padding:28px 20px}
 .tab{display:none}.tab.active{display:block}
 
-/* ── CARDS ──────────────────────────────── */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:18px}
-.card h3{
-  font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
-  color:var(--amber);text-transform:uppercase;letter-spacing:1.2px;
-  margin-bottom:12px;display:flex;align-items:center;gap:6px
-}
+.card h3{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px}
 .card p,.card li{font-size:11.5px;color:var(--text2);line-height:1.75}
-.card li{margin-left:14px;margin-bottom:3px}
 
-.fbox{
-  background:var(--bg3);border:1px solid var(--amberD);
-  border-radius:6px;padding:14px;text-align:center;margin:12px 0
-}
+.fbox{background:var(--bg3);border:1px solid var(--amberD);border-radius:6px;padding:14px;text-align:center;margin:12px 0}
 .fbox .f{font-size:14px;color:var(--text);letter-spacing:.5px}
 .fbox .fs{font-size:10px;color:var(--text2);margin-top:3px}
 
+.aprBox{
+  background:var(--bg3);border:1px solid #1e3a50;border-radius:6px;
+  padding:16px;margin:14px 0
+}
+.aprTitle{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:10px}
+.aprRow{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:12px;color:var(--text2)}
+.aprRow strong{color:var(--text)}
+.aprEq{
+  background:var(--bg4);border:1px solid var(--amberD);border-radius:4px;
+  padding:10px 16px;text-align:center;margin-top:10px;font-size:13px;color:var(--text)
+}
+.aprEq b{color:var(--amber);font-size:15px}
+
 .step{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
-.sn{
-  width:20px;height:20px;background:var(--amber);color:var(--bg);
-  border-radius:50%;font-size:10px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0
-}
+.sn{width:20px;height:20px;background:var(--amber);color:var(--bg);border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
-/* ── CANVAS PANELS ──────────────────────── */
-.canvasWrap{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:var(--r);padding:20px
-}
-canvas{width:100%;display:block;border-radius:6px}
+/* ── SIM LAYOUT ── */
+.simWrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:22px}
+.simRow{display:flex;gap:24px;align-items:flex-start}
+.simLeft{flex:0 0 auto}
+.simRight{flex:1;min-width:0}
 
-/* ── SIM CONTROLS ───────────────────────── */
 .simHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 .simTitle{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-.bigVal{font-size:30px;font-weight:700;color:var(--amber);letter-spacing:2px}
-.bigVal em{font-size:13px;color:var(--text2);font-style:normal}
-.controls{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:14px}
+.bigVal{font-size:28px;font-weight:700;color:var(--amber);letter-spacing:2px}
+.bigVal em{font-size:12px;color:var(--text2);font-style:normal}
+
+.rbreak{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:14px;background:var(--bg3);border-radius:6px;padding:12px}
+.rpart{text-align:center}
+.rval{font-size:18px;font-weight:700;color:var(--text)}
+.rlbl{font-size:8px;color:var(--text2);margin-top:2px;text-transform:uppercase;letter-spacing:.4px;line-height:1.3}
+.rplus-label{font-size:10px;color:var(--text3);text-align:center;padding-top:20px}
+
+.controls{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:14px;flex-wrap:wrap}
 .cb{
-  min-width:38px;height:38px;padding:0 10px;
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:6px;color:var(--text);font-family:monospace;
-  font-size:16px;cursor:pointer;display:flex;align-items:center;
-  justify-content:center;transition:all .12s;user-select:none
+  min-width:38px;height:38px;padding:0 10px;background:var(--bg3);border:1px solid var(--border);
+  border-radius:6px;color:var(--text);font-family:monospace;font-size:15px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .12s;user-select:none
 }
 .cb:hover{background:var(--bg4);border-color:var(--amber);color:var(--amber)}
 .cb:active{transform:scale(.93)}
 .clbl{font-size:9px;color:var(--text3);text-align:center;margin-top:3px}
 
-.rbreak{
-  display:flex;gap:12px;align-items:center;
-  margin-top:14px;background:var(--bg3);border-radius:6px;padding:12px 16px
-}
-.rpart{flex:1;text-align:center}
-.rval{font-size:19px;font-weight:700;color:var(--text)}
-.rlbl{font-size:9px;color:var(--text2);margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
-.rplus{display:flex;align-items:center;color:var(--text3);font-size:18px}
-
-/* ── EXERCISES ──────────────────────────── */
+/* ── EXERCISES ── */
 .exHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
 .ptDots{display:flex;gap:3px}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--bg4)}
 .dot.ok{background:var(--green)}.dot.fail{background:var(--red)}
-
 .lvbars{display:flex;gap:5px;align-items:center}
 .lvb{height:4px;width:36px;background:var(--bg4);border-radius:2px}
 .lvb.on{background:var(--amber)}
 
-.dbadge{
-  padding:3px 10px;border-radius:20px;font-size:9px;
-  font-weight:700;text-transform:uppercase;letter-spacing:1px
-}
+.exCard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:22px}
+.dbadge{padding:3px 10px;border-radius:20px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
 .d1{background:rgba(34,197,94,.14);color:#22c55e}
 .d2{background:rgba(245,158,11,.14);color:#f59e0b}
 .d3{background:rgba(244,63,94,.14);color:#f43f5e}
-
 .prompt{font-size:12px;color:var(--text2);margin-bottom:14px;line-height:1.6}
+
+.exRow{display:flex;gap:24px;align-items:flex-start}
+.exLeft{flex:0 0 auto}
+.exRight{flex:1}
 
 .irow{display:flex;gap:10px;align-items:center;margin-top:18px}
 .aInput{
-  flex:1;background:var(--bg3);border:1px solid var(--border);
-  border-radius:6px;padding:11px 14px;color:var(--text);
-  font-family:'Space Mono',monospace;font-size:20px;outline:none;
-  transition:border-color .2s;-moz-appearance:textfield
+  flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;
+  padding:11px 14px;color:var(--text);font-family:'Space Mono',monospace;font-size:20px;
+  outline:none;transition:border-color .2s;-moz-appearance:textfield
 }
 .aInput::-webkit-inner-spin-button,.aInput::-webkit-outer-spin-button{-webkit-appearance:none}
 .aInput:focus{border-color:var(--amber)}
@@ -149,43 +120,30 @@ canvas{width:100%;display:block;border-radius:6px}
 .aunit{font-size:12px;color:var(--text2)}
 .btnSub{
   background:var(--amber);color:var(--bg);border:none;border-radius:6px;
-  padding:11px 22px;font-family:'Space Mono',monospace;font-size:12px;
-  font-weight:700;cursor:pointer;transition:all .18s;
-  text-transform:uppercase;letter-spacing:1px
+  padding:11px 22px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  cursor:pointer;transition:all .18s;text-transform:uppercase;letter-spacing:1px
 }
 .btnSub:hover{background:#fbbf24}.btnSub:disabled{background:var(--bg4);color:var(--text3);cursor:not-allowed}
 .btnNext{
-  background:var(--bg3);color:var(--text);border:1px solid var(--border);
-  border-radius:6px;padding:11px 22px;font-family:'Space Mono',monospace;
-  font-size:12px;cursor:pointer;transition:all .18s;
-  text-transform:uppercase;letter-spacing:1px;display:none
+  background:var(--bg3);color:var(--text);border:1px solid var(--border);border-radius:6px;
+  padding:11px 22px;font-family:'Space Mono',monospace;font-size:12px;cursor:pointer;
+  transition:all .18s;text-transform:uppercase;letter-spacing:1px;display:none
 }
 .btnNext:hover{border-color:var(--amber);color:var(--amber)}
 
-.fbBox{
-  margin-top:14px;padding:14px;border-radius:6px;
-  font-size:12px;line-height:1.7;display:none
-}
+.fbBox{margin-top:14px;padding:14px;border-radius:6px;font-size:12px;line-height:1.7;display:none}
 .fbBox.ok{background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.28);color:var(--green);display:block}
 .fbBox.fail{background:rgba(244,63,94,.07);border:1px solid rgba(244,63,94,.28);color:var(--text);display:block}
-.fbBreak{
-  margin-top:9px;padding:10px 12px;background:var(--bg3);
-  border-radius:4px;color:var(--text2);font-size:11.5px
-}
+.fbBreak{margin-top:9px;padding:10px 12px;background:var(--bg3);border-radius:4px;color:var(--text2);font-size:11.5px}
 .aiFb{
-  margin-top:10px;padding:12px 14px;
-  background:var(--bg3);border-left:3px solid var(--amber);
-  border-radius:0 5px 5px 0;color:var(--text);font-size:12px;
-  line-height:1.75;display:none
+  margin-top:10px;padding:12px 14px;background:var(--bg3);
+  border-left:3px solid var(--amber);border-radius:0 5px 5px 0;
+  color:var(--text);font-size:12px;line-height:1.75;display:none
 }
-.spin{
-  width:13px;height:13px;border:2px solid var(--border);
-  border-top-color:var(--amber);border-radius:50%;
-  animation:spin .7s linear infinite;display:inline-block;vertical-align:middle;margin-right:6px
-}
+.spin{width:13px;height:13px;border:2px solid var(--border);border-top-color:var(--amber);border-radius:50%;animation:spin .7s linear infinite;display:inline-block;vertical-align:middle;margin-right:6px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── STATS ──────────────────────────────── */
+/* ── STATS ── */
 .statsRow{display:flex;gap:14px;margin-bottom:20px}
 .statCard{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px;text-align:center}
 .statV{font-size:30px;font-weight:700;color:var(--amber)}
@@ -198,13 +156,12 @@ canvas{width:100%;display:block;border-radius:6px}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .fadeUp{animation:fadeUp .3s ease}
+@keyframes notify{0%{opacity:0;transform:translateX(-50%) translateY(-8px)}12%{opacity:1;transform:translateX(-50%) translateY(0)}80%{opacity:1}100%{opacity:0}}
 
-@keyframes notify{0%{opacity:0;transform:translateX(-50%) translateY(-8px)}15%{opacity:1;transform:translateX(-50%) translateY(0)}80%{opacity:1}100%{opacity:0}}
-
-@media(max-width:620px){
+@media(max-width:680px){
   .grid2{grid-template-columns:1fr}
+  .simRow,.exRow{flex-direction:column}
   .statsRow{display:grid;grid-template-columns:1fr 1fr}
-  .grid2 .card[style*="span 2"]{grid-column:span 1}
 }
 </style>
 </head>
@@ -235,12 +192,11 @@ canvas{width:100%;display:block;border-radius:6px}
       <h3>◈ Zer da?</h3>
       <p>Bi punturen arteko altuera-diferentzia, edo erreferentzia bat eta piezaren elementu baten arteko diferentzia neurtzeko neurgailua.</p>
       <br>
-      <p>Erreferentziazko azal gisa <strong style="color:var(--text)">granitozko marmola</strong> erabiltzen da. <strong style="color:var(--text)">1.000 mm</strong>rainoko neurketak egin daitezke.</p>
+      <p>Erreferentziazko azal gisa <strong style="color:var(--text)">granitozko marmola</strong> erabiltzen da. <strong style="color:var(--text)">1.000 mm</strong>-rainoko neurketak egin daitezke.</p>
     </div>
-
     <div class="card">
       <h3>◈ Motak</h3>
-      <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:flex;flex-direction:column">
         <div style="padding:7px 0;border-bottom:1px solid var(--border);font-size:11.5px;color:var(--text2)"><span style="color:var(--amber)">▸ Vernier (Nonius)</span><br><span style="font-size:10.5px">Eskala nagusia + 50 zatiko nonius (0,02 mm)</span></div>
         <div style="padding:7px 0;border-bottom:1px solid var(--border);font-size:11.5px;color:var(--text2)"><span style="color:var(--amber)">▸ Digitu Mekanikoak</span><br><span style="font-size:10.5px">Kontadore mek. + ehundar erlojua</span></div>
         <div style="padding:7px 0;font-size:11.5px;color:var(--text2)"><span style="color:var(--amber)">▸ Digitala</span><br><span style="font-size:10.5px">Pantaila elektronikoa</span></div>
@@ -248,11 +204,26 @@ canvas{width:100%;display:block;border-radius:6px}
     </div>
 
     <div class="card" style="grid-column:span 2">
-      <h3>◈ Irakurketa prozesua — Vernier / Nonius (0,02 mm)</h3>
+      <h3>◈ Irakurketa prozesua — Vernier / Nonius</h3>
+
       <div class="fbox">
         <div class="f">IRAKURKETA = Eskala Nagusia + (Nonius marra zk. × 0,02 mm)</div>
         <div class="fs">Adibidea: 79 + (18 × 0,02) = 79,36 mm</div>
       </div>
+
+      <!-- APREZIAZIOA AZALPENA -->
+      <div class="aprBox">
+        <div class="aprTitle">🔍 Nondik dator 0,02 mm-ko apreziazioa?</div>
+        <div class="aprRow">▸ Noniusak <strong>50 zatiki</strong> ditu, baina eskala nagusiaren <strong>49 mm</strong>-ri dagozkionak</div>
+        <div class="aprRow">▸ Beraz, nonius zatiki bakoitza = 49 mm ÷ 50 = <strong>0,98 mm</strong></div>
+        <div class="aprRow">▸ Eskala nagusiaren 1 mm eta nonius zatikiaren arteko diferentzia = apreziazioa:</div>
+        <div class="aprEq">1 mm − 0,98 mm = <b>0,02 mm</b> → Apreziazioa ✓</div>
+        <p style="font-size:10.5px;color:var(--text3);margin-top:8px">
+          Hau da nonius-aren printzipioa: balio txiena irakur dezakeen bat datorren marra bilatuz.
+          50 zatiki direlako, 0,02 mm-ko zehaztasuna lortzen da (1mm ÷ 50 = 0,02 mm).
+        </p>
+      </div>
+
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px">
         <div>
           <div class="step"><div class="sn">1</div><p><strong style="color:var(--text)">Eskala nagusia irakurri:</strong> Noniusaren 0-marrak dagoen azken milimetro osoa irakurri.</p></div>
@@ -283,12 +254,11 @@ canvas{width:100%;display:block;border-radius:6px}
         <li style="font-size:11.5px;color:var(--text2);padding:5px 0">▸ Gainazalak garbi egon behar du</li>
       </ul>
     </div>
-
     <div class="card">
       <h3>◈ Mantenu gomendioak</h3>
       <ul style="list-style:none;padding:0">
         <li style="font-size:11.5px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border)">▸ Gida-zutabeak garbi mantendu</li>
-        <li style="font-size:11.5px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border)">▸ Paralaeismoa ≤ 0,01 mm egiaztatu</li>
+        <li style="font-size:11.5px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border)">▸ Paralelismoa ≤ 0,01 mm egiaztatu</li>
         <li style="font-size:11.5px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border)">▸ Erabili ondoren garbitu</li>
         <li style="font-size:11.5px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border)">▸ Eguzkia, tenperatura muturrekoak eta hezetasuna ekidin</li>
         <li style="font-size:11.5px;color:var(--text2);padding:5px 0">▸ 3 hilabete+ ez erabiliko bada → pila kendu</li>
@@ -297,43 +267,68 @@ canvas{width:100%;display:block;border-radius:6px}
   </div>
 
   <div style="text-align:center;margin-top:8px">
-    <button class="btnSub" onclick="showTab('simuladorea',document.querySelectorAll('nav button')[1])">
-      Simuladoreara joan →
-    </button>
+    <button class="btnSub" onclick="showTab('simuladorea',document.querySelectorAll('nav button')[1])">Simuladoreara joan →</button>
   </div>
 </div>
 
 <!-- ═══════════ SIMULADOREA ═══════════ -->
 <div class="tab" id="tab-simuladorea">
-  <div class="canvasWrap">
+  <div class="simWrap">
     <div class="simHead">
-      <div class="simTitle">⌖ Irakurketa Simuladorea</div>
-      <div class="bigVal" id="simDisplay">47.36 <em>mm</em></div>
+      <div class="simTitle">⌖ Irakurketa Simuladorea — Bertikala</div>
+      <div class="bigVal" id="simDisplay">47,36 <em>mm</em></div>
     </div>
+    <div class="simRow">
+      <div class="simLeft">
+        <canvas id="simCanvas" width="340" height="540" style="border-radius:8px;display:block"></canvas>
+      </div>
+      <div class="simRight">
+        <div class="rbreak">
+          <div class="rpart"><div class="rval" id="rbMain">47</div><div class="rlbl">Eskala Nagusia<br>(mm)</div></div>
+          <div class="rpart" style="padding-top:14px;color:var(--text3);font-size:16px">+</div>
+          <div class="rpart">
+            <div style="font-size:10px;color:var(--text2);margin-bottom:2px">(</div>
+            <div class="rval" id="rbN">18</div>
+            <div class="rlbl">Nonius marra</div>
+          </div>
+          <div class="rpart" style="padding-top:14px;color:var(--text3);font-size:16px">×</div>
+          <div class="rpart"><div class="rval">0,02</div><div class="rlbl">Apreziazioa<br>(mm)</div></div>
+          <div class="rpart" style="padding-top:14px;color:var(--text3);font-size:16px">)</div>
+          <div class="rpart" style="padding-top:14px;color:var(--text3);font-size:16px">=</div>
+          <div class="rpart"><div class="rval" id="rbTotal" style="color:var(--amber)">47,36</div><div class="rlbl">Irakurketa<br>(mm)</div></div>
+        </div>
 
-    <canvas id="simCanvas" width="880" height="210"></canvas>
+        <div style="margin-top:16px;background:var(--bg3);border-radius:6px;padding:14px">
+          <div style="font-size:10px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">📐 Apreziazioa</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.8">
+            Noniusak <strong style="color:var(--text)">50 zatiki</strong> ditu.<br>
+            Eskala nagusiaren <strong style="color:var(--text)">49 mm</strong> hartzen dituzte.<br>
+            → Nonius zatikia = 49÷50 = <strong style="color:var(--amber)">0,98 mm</strong><br>
+            → Apreziazioa = 1 − 0,98 = <strong style="color:var(--amber)">0,02 mm</strong>
+          </div>
+        </div>
 
-    <div class="controls">
-      <div><button class="cb" id="bm10">−−</button><div class="clbl">−1 mm</div></div>
-      <div><button class="cb" id="bm1">−</button><div class="clbl">−0,02 mm</div></div>
-      <div><button class="cb" id="brnd" style="padding:0 14px;min-width:auto">↺ Ausaz</button></div>
-      <div><button class="cb" id="bp1">+</button><div class="clbl">+0,02 mm</div></div>
-      <div><button class="cb" id="bp10">++</button><div class="clbl">+1 mm</div></div>
+        <div class="controls" style="margin-top:14px">
+          <div><button class="cb" id="bm10">−−</button><div class="clbl">−1 mm</div></div>
+          <div><button class="cb" id="bm1">−</button><div class="clbl">−0,02</div></div>
+          <div><button class="cb" id="brnd" style="padding:0 14px;min-width:auto">↺ Ausaz</button></div>
+          <div><button class="cb" id="bp1">+</button><div class="clbl">+0,02</div></div>
+          <div><button class="cb" id="bp10">++</button><div class="clbl">+1 mm</div></div>
+        </div>
+        <p style="font-size:10px;color:var(--text3);margin-top:10px;text-align:center">
+          ← / → teklatuaren geziak ere erabil ditzakezu · ↑↓ = ±1 mm
+        </p>
+        <div style="margin-top:16px;background:var(--bg3);border-radius:6px;padding:12px">
+          <div style="font-size:10px;color:var(--text2);margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:1px">Eskala irakurtzeko gida</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.8">
+            <span style="color:var(--amber)">▶</span> <strong style="color:var(--text)">Ezkerreko zutabea:</strong> Eskala nagusia (mm)<br>
+            <span style="color:var(--amber)">▶</span> <strong style="color:var(--text)">Eskuineko zutabea:</strong> Nonius (50 zatiki)<br>
+            <span style="color:var(--amber)">▶</span> <strong style="color:var(--text)">Urrezko marra:</strong> Bat datorren lerro kokagunea<br>
+            <span style="color:var(--amber)">▶</span> <strong style="color:var(--text)">Gezi laranja:</strong> 0-lerroa (irakurketa puntua)
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="rbreak">
-      <div class="rpart"><div class="rval" id="rbMain">47</div><div class="rlbl">Eskala Nagusia (mm)</div></div>
-      <div class="rplus">+</div>
-      <div class="rpart"><div class="rval" id="rbN">18</div><div class="rlbl">Nonius (marra zk.)</div></div>
-      <div class="rplus">×</div>
-      <div class="rpart"><div class="rval">0,02</div><div class="rlbl">Apreziazioa (mm)</div></div>
-      <div class="rplus">=</div>
-      <div class="rpart"><div class="rval" id="rbTotal" style="color:var(--amber)">47,36</div><div class="rlbl">Irakurketa (mm)</div></div>
-    </div>
-
-    <p style="font-size:10.5px;color:var(--text3);margin-top:10px;text-align:center">
-      Erabili botoiak balioa aldatzeko · Ikusi nola mugitzen den bat datorren marra · Ondoren joan Ariketara praktikatzera
-    </p>
   </div>
 </div>
 
@@ -354,27 +349,43 @@ canvas{width:100%;display:block;border-radius:6px}
     </div>
   </div>
 
-  <div class="canvasWrap fadeUp" id="exCard">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
-      <p class="prompt" id="exPrompt">Irakurri ondorengo altueren kalibrearen eskala eta sartu neurria mm-tan (adib.: 47.36):</p>
+  <div class="exCard fadeUp" id="exCard">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+      <p class="prompt" id="exPrompt">Irakurri altueren kalibrearen eskala eta sartu neurria mm-tan (adib.: 47.36):</p>
       <span class="dbadge d1" id="dBadge">Maila 1</span>
     </div>
-
-    <canvas id="exCanvas" width="880" height="210"></canvas>
-
-    <div class="irow">
-      <input type="number" class="aInput" id="ansInput"
-             placeholder="0.00" step="0.01" min="0" max="300"
-             onkeydown="if(event.key==='Enter')checkAnswer()">
-      <span class="aunit">mm</span>
-      <button class="btnSub" id="subBtn" onclick="checkAnswer()">Egiaztatu</button>
-      <button class="btnNext" id="nxtBtn" onclick="nextExercise()">Hurrengoa →</button>
-    </div>
-
-    <div class="fbBox" id="fbBox">
-      <div id="fbText"></div>
-      <div class="fbBreak" id="fbBreak"></div>
-      <div class="aiFb" id="aiFb"></div>
+    <div class="exRow">
+      <div class="exLeft">
+        <canvas id="exCanvas" width="340" height="540" style="border-radius:8px;display:block"></canvas>
+      </div>
+      <div class="exRight">
+        <div style="background:var(--bg3);border-radius:6px;padding:14px;margin-bottom:14px">
+          <div style="font-size:10px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Nola irakurri</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.9">
+            1. Bilatu <strong style="color:var(--text)">gezi laranjaren</strong> kokapena eskala nagusian → milimetroak<br>
+            2. Bilatu zein <strong style="color:var(--text)">nonius-marra</strong> datorren bat eskala nagusiko marra batekin<br>
+            3. Biderkatu marra-zenbakia <strong style="color:var(--text)">× 0,02</strong><br>
+            4. Batu bi balioak
+          </div>
+        </div>
+        <div class="irow" style="flex-direction:column;align-items:stretch;gap:10px">
+          <div style="display:flex;gap:10px;align-items:center">
+            <input type="number" class="aInput" id="ansInput"
+                   placeholder="0.00" step="0.01" min="0" max="300"
+                   onkeydown="if(event.key==='Enter')checkAnswer()">
+            <span class="aunit">mm</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btnSub" id="subBtn" onclick="checkAnswer()" style="flex:1">Egiaztatu</button>
+            <button class="btnNext" id="nxtBtn" onclick="nextExercise()" style="flex:1">Hurrengoa →</button>
+          </div>
+        </div>
+        <div class="fbBox" id="fbBox">
+          <div id="fbText"></div>
+          <div class="fbBreak" id="fbBreak"></div>
+          <div class="aiFb" id="aiFb"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -391,151 +402,204 @@ canvas{width:100%;display:block;border-radius:6px}
     <div class="statCard"><div class="statV" id="stLvl">1</div><div class="statL">Uneko Maila</div></div>
   </div>
   <div class="histList" id="histList">
-    <div style="padding:26px;text-align:center;color:var(--text2);font-size:12px">
-      Oraindik ez duzu ariketarik egin
-    </div>
+    <div style="padding:26px;text-align:center;color:var(--text2);font-size:12px">Oraindik ez duzu ariketarik egin</div>
   </div>
 </div>
 
 </main>
 
 <script>
-/* ═══════════════════════════════════════════════
-   CONSTANTS & STATE
-═══════════════════════════════════════════════ */
-const PX = 11;          // pixels per mm on main scale
-const VS = 0.98 * PX;   // pixels per vernier division
-const X0 = 52;          // canvas x-offset for vernier 0-line
-
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
 let simVal = 47.36;
 let exVal  = 0;
 let answered = false;
-let score = {
-  level: 1, consOk: 0, consFail: 0,
-  total: 0, correct: 0, history: []
-};
+let score = { level:1, consOk:0, consFail:0, total:0, correct:0, history:[] };
 
-/* ═══════════════════════════════════════════════
-   TAB NAVIGATION
-═══════════════════════════════════════════════ */
-function showTab(name, btn) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  if (btn) btn.classList.add('active');
-  if (name === 'simuladorea') drawSim();
-  if (name === 'ariketak' && exVal === 0) nextExercise();
-  if (name === 'aurrerakuntza') renderStats();
-}
-
-/* ═══════════════════════════════════════════════
-   CANVAS DRAWING ENGINE
-═══════════════════════════════════════════════ */
-function drawScale(id, value, showCoin, exMode) {
-  const cv = document.getElementById(id);
+/* ═══════════════════════════════════════════
+   VERTICAL SCALE DRAWING
+   
+   Physics:
+   - value = floor(value) + coin * 0.02  (e.g. 47.36 = 47 + 18*0.02)
+   - Vernier line k at canvas y: Y0 - k * 0.98 * PXV   (going UP)
+   - Main scale line n at canvas y: Y0 + (value - n) * PXV
+   - Coincidence when: k*0.98 = n - value  → n = value + k*0.98
+     (for k=18, value=47.36: n = 47.36+17.64 = 65)
+═══════════════════════════════════════════ */
+function drawScaleVertical(id, value, showCoin, exMode) {
+  const cv  = document.getElementById(id);
   const ctx = cv.getContext('2d');
   const W = cv.width, H = cv.height;
 
-  // BG
-  ctx.fillStyle = '#0e1420';
-  ctx.beginPath();ctx.roundRect(0,0,W,H,8);ctx.fill();
+  // Background
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = '#0a0f18';
+  ctx.beginPath(); ctx.roundRect(0,0,W,H,10); ctx.fill();
 
-  // Subtle grid
-  ctx.strokeStyle = '#131c2b';ctx.lineWidth = .5;
-  for (let x=0;x<W;x+=50){
-    ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();
-  }
+  // Subtle vertical texture lines
+  ctx.strokeStyle = '#0d1520'; ctx.lineWidth = 1;
+  for(let x=0;x<W;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
 
-  const mY = H * .32, mH = H * .28;  // main scale strip
-  const vY = H * .72, vH = H * .26;  // vernier strip
-  const flr = Math.floor(value);
+  const PAD_TOP = 34, PAD_BOT = 40;
+  const drawH = H - PAD_TOP - PAD_BOT;
+  // Fit 50 vernier divisions (= 49mm) plus a little context
+  const PXV = drawH / 51;   // pixels per mm
+
+  // Y0 = position of vernier 0-line (bottom of vernier span)
+  const Y0 = H - PAD_BOT;
+
+  const flr  = Math.floor(value);
   const coin = Math.round((value - flr) / 0.02);
 
-  // ── MAIN SCALE ──
-  ctx.fillStyle = '#131d2e';
-  ctx.beginPath();ctx.roundRect(0, mY-mH/2, W, mH, 4);ctx.fill();
+  // ── BACKGROUND STRIPS ──
+  // Main scale strip (left)
+  ctx.fillStyle = 'rgba(20,30,50,0.7)';
+  ctx.beginPath(); ctx.roundRect(14, PAD_TOP-10, 130, drawH+14, 4); ctx.fill();
+  // Vernier strip (right)
+  ctx.fillStyle = 'rgba(15,25,42,0.7)';
+  ctx.beginPath(); ctx.roundRect(W-144, PAD_TOP-10, 130, drawH+14, 4); ctx.fill();
 
-  ctx.fillStyle='#2e4060';ctx.font='bold 9px "Space Mono",monospace';
-  ctx.textAlign='left';
-  ctx.fillText('ESKALA NAGUSIA', 8, mY - mH/2 - 4);
+  // ── COLUMN HEADERS ──
+  ctx.font = 'bold 8.5px "Space Mono",monospace';
+  ctx.textAlign = 'center'; ctx.fillStyle = '#2e4870';
+  ctx.fillText('ESKALA NAGUSIA', 78, PAD_TOP - 16);
+  ctx.fillText('NONIUS  (50 zatiki)', W-78, PAD_TOP - 16);
 
-  for (let n = Math.max(0, flr-6); n <= flr+22; n++) {
-    const x = X0 + (n - value) * PX;
-    if (x < -2 || x > W+2) continue;
+  // ── SPINE LINES ──
+  const MX = 136;   // main scale right edge (ticks go left)
+  const VX = W-136; // vernier left edge (ticks go right)
+
+  ctx.strokeStyle = '#1e3050'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(MX, PAD_TOP-8); ctx.lineTo(MX, Y0+6); ctx.stroke();
+  ctx.strokeStyle = '#1e3050'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(VX, PAD_TOP-8); ctx.lineTo(VX, Y0+6); ctx.stroke();
+
+  // ── MAIN SCALE TICKS ──
+  // Line n at y = Y0 + (value-n)*PXV  (n>value → y<Y0 = above; n<value → y>Y0 = below)
+  for(let n = Math.max(0, flr-2); n <= flr+55; n++) {
+    const y = Y0 + (value - n) * PXV;
+    if(y < PAD_TOP - 12 || y > H - PAD_BOT + 8) continue;
+
     const is10 = n%10===0, is5 = n%5===0, isFlr = n===flr;
-    let tH = mH*.25, col = '#1e2e48', lw = .8;
-    if (is10)  { tH=mH*.72; col='#6a7c96'; lw=1.5 }
-    else if (is5) { tH=mH*.5; col='#3a5070'; lw=1.2 }
-    if (isFlr) { tH=mH*.8; col='#f59e0b'; lw=2 }
+    let tLen=6, col='#1a2a40', lw=0.7;
+    if(is10)   { tLen=32; col='#5a7090'; lw=1.8; }
+    else if(is5){ tLen=20; col='#2e4a68'; lw=1.2; }
+    else if(isFlr){ tLen=26; col='rgba(245,158,11,0.6)'; lw=1.5; }
 
-    ctx.strokeStyle=col;ctx.lineWidth=lw;
-    ctx.beginPath();ctx.moveTo(x,mY+mH/2);ctx.lineTo(x,mY+mH/2-tH);ctx.stroke();
+    ctx.strokeStyle=col; ctx.lineWidth=lw;
+    ctx.beginPath(); ctx.moveTo(MX, y); ctx.lineTo(MX-tLen, y); ctx.stroke();
 
-    if (is10 || isFlr || (n===flr+1)) {
-      ctx.fillStyle = isFlr?'#f59e0b':'#6a7c96';
-      ctx.font = isFlr?'bold 10px "Space Mono",monospace':'9px "Space Mono",monospace';
-      ctx.textAlign='center';
-      ctx.fillText(n, x, mY - mH/2 - 5);
+    if(is10 || isFlr) {
+      ctx.fillStyle = isFlr ? 'rgba(245,158,11,0.7)' : '#5a7090';
+      ctx.font = isFlr ? 'bold 10px "Space Mono",monospace' : '9px "Space Mono",monospace';
+      ctx.textAlign = 'right';
+      ctx.fillText(n, MX-36, y+3.5);
     }
   }
 
-  // Vernier 0-cursor on main scale
-  ctx.strokeStyle='rgba(245,158,11,.7)';ctx.lineWidth=1.5;
-  ctx.setLineDash([2,3]);
-  ctx.beginPath();ctx.moveTo(X0, mY-mH/2-2);ctx.lineTo(X0, mY+mH/2);ctx.stroke();
-  ctx.setLineDash([]);
-  // Arrow
-  ctx.fillStyle='#f59e0b';
-  ctx.beginPath();ctx.moveTo(X0-5,mY-mH/2-11);ctx.lineTo(X0+5,mY-mH/2-11);ctx.lineTo(X0,mY-mH/2-2);ctx.fill();
+  // ── VERNIER TICKS ──
+  // Line k at y = Y0 - k * 0.98 * PXV  (going UP)
+  for(let k=0; k<=50; k++) {
+    const y = Y0 - k * 0.98 * PXV;
+    if(y < PAD_TOP - 12) break;
 
-  // ── VERNIER SCALE ──
-  ctx.fillStyle='#131d2e';
-  ctx.beginPath();ctx.roundRect(0, vY-vH/2, W, vH, 4);ctx.fill();
-
-  ctx.fillStyle='#2e4060';ctx.font='bold 9px "Space Mono",monospace';
-  ctx.textAlign='left';
-  ctx.fillText('NONIUS  (× 0,02 mm)', 8, vY + vH/2 + 13);
-
-  for (let k=0; k<=50; k++) {
-    const x = X0 + k * VS;
-    if (x > W+2) break;
     const is10=k%10===0, is5=k%5===0;
     const isCoin = k===coin;
-    let tH=vH*.28, col='#1e2e48', lw=.8;
-    if (is10) { tH=vH*.65; col='#6a7c96'; lw=1.4 }
-    else if (is5) { tH=vH*.44; col='#3a5070'; lw=1 }
-    if (isCoin && showCoin) { tH=vH*.9; col='#f59e0b'; lw=2.5 }
+    let tLen=6, col='#1a2a40', lw=0.7;
+    if(is10)    { tLen=32; col='#5a7090'; lw=1.8; }
+    else if(is5){ tLen=20; col='#2e4a68'; lw=1.2; }
+    if(isCoin && showCoin){ tLen=36; col='#f59e0b'; lw=3; }
 
-    ctx.strokeStyle=col;ctx.lineWidth=lw;
-    ctx.beginPath();ctx.moveTo(x,vY-vH/2);ctx.lineTo(x,vY-vH/2+tH);ctx.stroke();
+    ctx.strokeStyle=col; ctx.lineWidth=lw;
+    ctx.beginPath(); ctx.moveTo(VX, y); ctx.lineTo(VX+tLen, y); ctx.stroke();
 
-    if (is10 || (isCoin && showCoin)) {
-      ctx.fillStyle = (isCoin&&showCoin)?'#f59e0b':'#6a7c96';
-      ctx.font = (isCoin&&showCoin)?'bold 10px "Space Mono",monospace':'9px "Space Mono",monospace';
-      ctx.textAlign='center';
-      ctx.fillText(k, x, vY+vH/2+12);
+    if(is10 || (isCoin && showCoin)) {
+      ctx.fillStyle = (isCoin && showCoin) ? '#f59e0b' : '#5a7090';
+      ctx.font = (isCoin && showCoin) ? 'bold 11px "Space Mono",monospace' : '9px "Space Mono",monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText(k, VX+40, y+3.5);
     }
   }
 
-  // 0-mark label
-  ctx.fillStyle='#f59e0b';ctx.font='9px "Space Mono",monospace';ctx.textAlign='center';
-  ctx.fillText('▼',X0, vY-vH/2-3);
+  // ── 0-LINE INDICATOR ──
+  const arrowX = MX + (VX - MX) / 2;
 
-  // Exercise hint
-  if (exMode && !showCoin) {
-    ctx.fillStyle='#2e4060';ctx.font='9px "Space Mono",monospace';ctx.textAlign='right';
-    ctx.fillText('← Bilatu bat datorren marra', W-10, H-6);
+  // Dashed horizontal across gap
+  ctx.strokeStyle = 'rgba(245,158,11,0.5)'; ctx.lineWidth = 1.5;
+  ctx.setLineDash([3,3]);
+  ctx.beginPath(); ctx.moveTo(MX, Y0); ctx.lineTo(VX, Y0); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Arrow triangle pointing right (toward main scale)
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath();
+  ctx.moveTo(MX+14, Y0-7);
+  ctx.lineTo(MX+2,  Y0);
+  ctx.lineTo(MX+14, Y0+7);
+  ctx.fill();
+
+  // Value label on 0-line
+  ctx.fillStyle = '#f59e0b';
+  ctx.font = 'bold 11px "Space Mono",monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText(value.toFixed(2)+' mm', arrowX, Y0 - 10);
+
+  // ── COINCIDENT LINE HIGHLIGHT ──
+  if(showCoin && coin > 0) {
+    const yC = Y0 - coin * 0.98 * PXV;
+
+    // Glow effect
+    ctx.strokeStyle = 'rgba(245,158,11,0.15)'; ctx.lineWidth = 8;
+    ctx.beginPath(); ctx.moveTo(MX-10, yC); ctx.lineTo(VX+10, yC); ctx.stroke();
+
+    // Dashed line through gap
+    ctx.strokeStyle = 'rgba(245,158,11,0.7)'; ctx.lineWidth = 1.5;
+    ctx.setLineDash([3,4]);
+    ctx.beginPath(); ctx.moveTo(MX, yC); ctx.lineTo(VX, yC); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Gold circle at coincidence point
+    const cx = arrowX;
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath(); ctx.arc(cx, yC, 5, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = '#fff8'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, yC, 5, 0, Math.PI*2); ctx.stroke();
+
+    // Label: coincident marra number
+    ctx.fillStyle = 'rgba(245,158,11,0.8)';
+    ctx.font = 'bold 9px "Space Mono",monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('← '+coin, arrowX, yC - 8);
+  }
+
+  // ── BOTTOM LABELS ──
+  ctx.fillStyle = '#2e4060';
+  ctx.font = '8.5px "Space Mono",monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('mm', 60, H-12);
+  ctx.fillText('zatiki zk.', W-60, H-12);
+
+  // ── EXERCISE HINT ──
+  if(exMode && !showCoin) {
+    // Blind: hide coincident marra label
+    ctx.fillStyle = 'rgba(10,15,24,0.92)';
+    ctx.fillRect(VX+36, PAD_TOP-8, 68, drawH+14);
+    ctx.fillStyle = '#2a3a52'; ctx.font = '8px "Space Mono",monospace'; ctx.textAlign='center';
+    ctx.fillText('Bilatu', W-64, PAD_TOP+16);
+    ctx.fillText('bat datorren', W-64, PAD_TOP+28);
+    ctx.fillText('marra →', W-64, PAD_TOP+40);
   }
 }
 
-/* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════
    SIMULATOR
-═══════════════════════════════════════════════ */
+═══════════════════════════════════════════ */
 function drawSim() {
-  drawScale('simCanvas', simVal, true, false);
+  drawScaleVertical('simCanvas', simVal, true, false);
   const flr = Math.floor(simVal);
   const coin = Math.round((simVal-flr)/0.02);
-  document.getElementById('simDisplay').innerHTML = simVal.toFixed(2)+' <em>mm</em>';
+  document.getElementById('simDisplay').innerHTML = simVal.toFixed(2).replace('.',',')+' <em>mm</em>';
   document.getElementById('rbMain').textContent = flr;
   document.getElementById('rbN').textContent = coin;
   document.getElementById('rbTotal').textContent = simVal.toFixed(2).replace('.',',');
@@ -554,22 +618,22 @@ document.getElementById('bp1').onclick=()=>chgSim(0.02);
 document.getElementById('bp10').onclick=()=>chgSim(1);
 document.getElementById('brnd').onclick=()=>{simVal=genVal(2);drawSim()};
 
-document.addEventListener('keydown', e => {
-  if (document.getElementById('tab-simuladorea').classList.contains('active')) {
-    if (e.key==='ArrowLeft') chgSim(-0.02);
-    if (e.key==='ArrowRight') chgSim(0.02);
-    if (e.key==='ArrowDown') chgSim(-1);
-    if (e.key==='ArrowUp') chgSim(1);
+document.addEventListener('keydown', e=>{
+  if(document.getElementById('tab-simuladorea').classList.contains('active')){
+    if(e.key==='ArrowLeft') chgSim(-0.02);
+    if(e.key==='ArrowRight') chgSim(0.02);
+    if(e.key==='ArrowDown') chgSim(-1);
+    if(e.key==='ArrowUp') chgSim(1);
   }
 });
 
-/* ═══════════════════════════════════════════════
-   EXERCISE GENERATION
-═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   EXERCISES
+═══════════════════════════════════════════ */
 function genVal(level) {
-  const mm = Math.floor(Math.random()*80)+15;
+  const mm = Math.floor(Math.random()*70)+20;
   let coin;
-  if (level===1) coin=[0,5,10,15,20,25,30,35,40,45][Math.floor(Math.random()*10)];
+  if(level===1) coin=[0,5,10,15,20,25,30,35,40,45][Math.floor(Math.random()*10)];
   else coin = Math.floor(Math.random()*50);
   return Math.round((mm + coin*0.02)*100)/100;
 }
@@ -577,10 +641,10 @@ function genVal(level) {
 function nextExercise() {
   answered = false;
   exVal = genVal(score.level);
-  drawScale('exCanvas', exVal, false, true);
+  drawScaleVertical('exCanvas', exVal, false, true);
 
   const inp = document.getElementById('ansInput');
-  inp.value='';inp.className='aInput';inp.disabled=false;
+  inp.value=''; inp.className='aInput'; inp.disabled=false;
   setTimeout(()=>inp.focus(),50);
 
   document.getElementById('subBtn').style.display='';
@@ -592,95 +656,83 @@ function nextExercise() {
   setTimeout(()=>document.getElementById('exCard').classList.remove('fadeUp'),400);
 
   const lvls=['','Maila 1 — Oinarrizkoa','Maila 2 — Ertaina','Maila 3 — Aurreratua'];
-  const dbEl=document.getElementById('dBadge');
-  dbEl.textContent=lvls[score.level];
-  dbEl.className=`dbadge d${score.level}`;
+  const db = document.getElementById('dBadge');
+  db.textContent=lvls[score.level]; db.className=`dbadge d${score.level}`;
   updateLvBars();
 }
 
-/* ═══════════════════════════════════════════════
-   CHECK ANSWER
-═══════════════════════════════════════════════ */
 async function checkAnswer() {
-  if (answered) return;
+  if(answered) return;
   const inp = document.getElementById('ansInput');
   const val = parseFloat(inp.value.replace(',','.'));
-  if (isNaN(val)) { inp.placeholder='Sartu zenbaki bat!';inp.focus();return; }
+  if(isNaN(val)){ inp.placeholder='Sartu zenbaki bat!';inp.focus();return; }
 
   answered = true;
   const ok = Math.abs(val - exVal) < 0.011;
   const flr = Math.floor(exVal);
   const coin = Math.round((exVal-flr)/0.02);
-  const dec = (coin*0.02).toFixed(2);
+  const dec  = (coin*0.02).toFixed(2);
 
-  inp.className = 'aInput '+(ok?'ok':'fail');
-  inp.disabled = true;
+  inp.className='aInput '+(ok?'ok':'fail');
+  inp.disabled=true;
   document.getElementById('subBtn').style.display='none';
   document.getElementById('nxtBtn').style.display='';
 
-  // Reveal coincident line
-  drawScale('exCanvas', exVal, true, false);
+  drawScaleVertical('exCanvas', exVal, true, false);
 
-  // Update score
-  score.total++; score.history.unshift({v:exVal,s:val,ok,lvl:score.level});
-  if (score.history.length>25) score.history.pop();
-  if (ok) {
-    score.correct++;score.consOk++;score.consFail=0;
-    if (score.consOk>=3 && score.level<3){score.level++;score.consOk=0;showNotif(`↑ Maila ${score.level}ra igo zara!`);}
+  score.total++;
+  score.history.unshift({v:exVal,s:val,ok,lvl:score.level});
+  if(score.history.length>25) score.history.pop();
+
+  if(ok){
+    score.correct++; score.consOk++; score.consFail=0;
+    if(score.consOk>=3 && score.level<3){ score.level++; score.consOk=0; showNotif(`↑ Maila ${score.level}ra igo zara!`); }
   } else {
-    score.consFail++;score.consOk=0;
-    if (score.consFail>=2 && score.level>1){score.level--;score.consFail=0;showNotif(`Maila ${score.level}ra egokitu da`);}
+    score.consFail++; score.consOk=0;
+    if(score.consFail>=2 && score.level>1){ score.level--; score.consFail=0; showNotif(`Maila ${score.level}ra egokitu da`); }
   }
-  updateLvDisplay();updateDots();
+  updateLvDisplay(); updateDots();
 
-  const fb=document.getElementById('fbBox');
   document.getElementById('fbText').innerHTML = ok
-    ? `✓ Ondo! <strong>${exVal.toFixed(2)} mm</strong> zuzen irakurri duzu.`
-    : `✗ Ez da zuzena. Zure erantzuna: <strong>${val.toFixed(2)} mm</strong> · Erantzun zuzena: <strong>${exVal.toFixed(2)} mm</strong>`;
+    ? `✓ Ondo! <strong>${exVal.toFixed(2).replace('.',',')} mm</strong> zuzen irakurri duzu.`
+    : `✗ Ez da zuzena. Zure erantzuna: <strong>${val.toFixed(2).replace('.',',')} mm</strong> · Zuzena: <strong>${exVal.toFixed(2).replace('.',',')} mm</strong>`;
   document.getElementById('fbBreak').innerHTML =
-    `${flr} mm + (${coin} × 0,02 mm) = ${flr} + ${dec} = <strong>${exVal.toFixed(2)} mm</strong>`;
-  fb.className = 'fbBox '+(ok?'ok':'fail');
+    `${flr} mm + (${coin} × 0,02 mm) = ${flr} + ${dec} = <strong>${exVal.toFixed(2).replace('.',',')} mm</strong>`;
+  document.getElementById('fbBox').className='fbBox '+(ok?'ok':'fail');
 
-  if (!ok) {
-    const aiFb = document.getElementById('aiFb');
+  if(!ok){
+    const aiFb=document.getElementById('aiFb');
     aiFb.style.display='block';
     aiFb.innerHTML='<span class="spin"></span>Azalpena sortzen...';
     try {
       const txt = await getAIFeedback(exVal,val,flr,coin);
       aiFb.innerHTML='🤖 '+txt;
-    } catch(e) {
-      aiFb.innerHTML=`Gogoratu: eskala nagusia (${flr} mm) + nonius-eko bat datorren marra (${coin}) × 0,02 mm = ${exVal.toFixed(2)} mm.`;
+    } catch(e){
+      aiFb.innerHTML=`Gogoratu: eskala nagusia (${flr} mm) + nonius-eko bat datorren marra (${coin}) × 0,02 mm = ${exVal.toFixed(2).replace('.',',')} mm.`;
     }
   }
 }
 
-/* ═══════════════════════════════════════════════
-   ADAPTIVE AI FEEDBACK
-═══════════════════════════════════════════════ */
 async function getAIFeedback(value, student, mainMM, coin) {
   const body = {
-    model: 'claude-sonnet-4-20250514',
-    max_tokens: 1000,
-    messages: [{
-      role: 'user',
-      content: `Metrologia klase batean (Easo Politeknikoa, Mekanika), ikasle batek altueren kalibrearen Vernier/Nonius irakurketa gaizki egin du.
+    model:'claude-sonnet-4-20250514', max_tokens:1000,
+    messages:[{ role:'user', content:
+      `Metrologia klase batean (Easo Politeknikoa, Mekanika), ikasle batek altueren kalibrearen Vernier/Nonius irakurketa gaizki egin du.
 
 Irakurri beharreko balioa: ${value.toFixed(2)} mm
 Ikaslearen erantzuna: ${student.toFixed(2)} mm
-Erantzun zuzena: ${value.toFixed(2)} mm
 
 Kalkulua:
-- Eskala nagusia: ${mainMM} mm (noniusaren 0-marrak ${mainMM}mm-ko marka pasa du)
+- Eskala nagusia: ${mainMM} mm
 - Bat datorren nonius marra: ${coin} (${coin} × 0,02 mm = ${(coin*0.02).toFixed(2)} mm)
 - Guztira: ${mainMM} + ${(coin*0.02).toFixed(2)} = ${value.toFixed(2)} mm
 
-Erantzun euskaraz, laburki (2-3 esaldi), zer akats egin duen eta nola hobetuko lukeen. Azalpen zehatza eman (adibidez, ea eskala nagusia gaizki irakurri duen, ala bat datorren marra gaizki identifikatu duen). Tonua laguntzailea eta animatzailea izan dadila.`
+Erantzun euskaraz, laburki (2-3 esaldi), zer akats egin duen eta nola hobetuko lukeen. Tonua laguntzailea eta animatzailea.`
     }]
   };
-
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+  const resp = await fetch('https://api.anthropic.com/v1/messages',{
     method:'POST',
-    headers:{'Content-Type':'application/json'},
+    headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
     body:JSON.stringify(body)
   });
   if(!resp.ok) throw new Error('API error');
@@ -688,41 +740,43 @@ Erantzun euskaraz, laburki (2-3 esaldi), zer akats egin duen eta nola hobetuko l
   return data.content.map(b=>b.type==='text'?b.text:'').join('');
 }
 
-/* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════
    UI HELPERS
-═══════════════════════════════════════════════ */
-function updateLvBars() {
-  for(let i=1;i<=3;i++)
-    document.getElementById('lb'+i).className='lvb'+(i<=score.level?' on':'');
+═══════════════════════════════════════════ */
+function showTab(name, btn) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(name==='simuladorea') drawSim();
+  if(name==='ariketak' && exVal===0) nextExercise();
+  if(name==='aurrerakuntza') renderStats();
 }
-function updateLvDisplay() {
+
+function updateLvBars(){ for(let i=1;i<=3;i++) document.getElementById('lb'+i).className='lvb'+(i<=score.level?' on':''); }
+function updateLvDisplay(){
   const l=['','Oinarrizkoa','Ertaina','Aurreratua'];
   document.getElementById('hLevel').textContent=`${score.level} — ${l[score.level]}`;
   document.getElementById('stLvl').textContent=score.level;
   updateLvBars();
 }
-function updateDots() {
+function updateDots(){
   document.getElementById('ptDots').innerHTML=
     score.history.slice(0,10).map(h=>`<div class="dot ${h.ok?'ok':'fail'}"></div>`).join('');
 }
-function showNotif(msg) {
+function showNotif(msg){
   const n=document.createElement('div');
   n.style.cssText='position:fixed;top:72px;left:50%;transform:translateX(-50%);background:var(--amber);color:#0c1018;padding:9px 22px;border-radius:20px;font-family:"Space Mono",monospace;font-size:12px;font-weight:700;z-index:999;animation:notify 2.8s ease forwards;pointer-events:none';
-  n.textContent=msg;
-  document.body.appendChild(n);
+  n.textContent=msg; document.body.appendChild(n);
   setTimeout(()=>n.remove(),2900);
 }
-
-function renderStats() {
+function renderStats(){
   document.getElementById('stTotal').textContent=score.total;
   document.getElementById('stOk').textContent=score.correct;
   document.getElementById('stPct').textContent=score.total>0?Math.round(score.correct/score.total*100)+'%':'—';
   document.getElementById('stLvl').textContent=score.level;
   const h=document.getElementById('histList');
-  if(!score.history.length){
-    h.innerHTML='<div style="padding:26px;text-align:center;color:var(--text2);font-size:12px">Oraindik ez duzu ariketarik egin</div>';
-    return;
-  }
+  if(!score.history.length){ h.innerHTML='<div style="padding:26px;text-align:center;color:var(--text2);font-size:12px">Oraindik ez duzu ariketarik egin</div>'; return; }
   h.innerHTML=score.history.map(e=>`
     <div class="hItem">
       <span>${e.ok?'✓':'✗'}</span>
@@ -732,13 +786,10 @@ function renderStats() {
     </div>`).join('');
 }
 
-/* ═══════════════════════════════════════════════
-   INIT
-═══════════════════════════════════════════════ */
+// Init
 const nStyle=document.createElement('style');
 nStyle.textContent=`@keyframes notify{0%{opacity:0;transform:translateX(-50%) translateY(-8px)}12%{opacity:1;transform:translateX(-50%) translateY(0)}80%{opacity:1}100%{opacity:0}}`;
 document.head.appendChild(nStyle);
-
 drawSim();
 </script>
 </body>
