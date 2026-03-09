@@ -703,55 +703,12 @@ async function checkAnswer() {
   if(!ok){
     const aiFb=document.getElementById('aiFb');
     aiFb.style.display='block';
-    aiFb.innerHTML='<span class="spin"></span>Azalpena sortzen...';
-    try {
-      const txt = await getAIFeedback(exVal,val,flr,coin);
-      aiFb.innerHTML='🤖 '+txt;
-    } catch(e){
-      aiFb.innerHTML=`Gogoratu: eskala nagusia (${flr} mm) + nonius-eko bat datorren marra (${coin}) × 0,02 mm = ${exVal.toFixed(2).replace('.',',')} mm.`;
-    }
+    aiFb.innerHTML='<strong>Gogoratu irakurketa prozesua:</strong><br>'
+      + '1. Gezi laranjaren kokapena eskala nagusian &rarr; <strong>'+flr+' mm</strong><br>'
+      + '2. Bilatu bat datorren nonius-marra &rarr; <strong>'+coin+'. marra</strong><br>'
+      + '3. Biderkatu: '+coin+' &times; 0,02 mm = <strong>'+(coin*0.02).toFixed(2)+' mm</strong><br>'
+      + '4. Batu: '+flr+' + '+(coin*0.02).toFixed(2)+' = <strong>'+exVal.toFixed(2).replace('.',',')+' mm</strong>';
   }
-}
-
-function getApiKey() {
-  // Key stored only in memory for this session — never in the HTML file
-  if(window._apiKey) return window._apiKey;
-  const key = prompt('Sartu API gakoa AI azalpenak aktibatzeko:\n(Irakasleentzat soilik — ikasleek utzi hutsik)');
-  if(key && key.trim().startsWith('sk-')) {
-    window._apiKey = key.trim();
-    return window._apiKey;
-  }
-  return null;
-}
-
-async function getAIFeedback(value, student, mainMM, coin) {
-  const apiKey = getApiKey();
-  if(!apiKey) throw new Error('No key');
-
-  const body = {
-    model:'claude-sonnet-4-20250514', max_tokens:1000,
-    messages:[{ role:'user', content:
-      `Metrologia klase batean (Easo Politeknikoa, Mekanika), ikasle batek altueren kalibrearen Vernier/Nonius irakurketa gaizki egin du.
-
-Irakurri beharreko balioa: ${value.toFixed(2)} mm
-Ikaslearen erantzuna: ${student.toFixed(2)} mm
-
-Kalkulua:
-- Eskala nagusia: ${mainMM} mm
-- Bat datorren nonius marra: ${coin} (${coin} × 0,02 mm = ${(coin*0.02).toFixed(2)} mm)
-- Guztira: ${mainMM} + ${(coin*0.02).toFixed(2)} = ${value.toFixed(2)} mm
-
-Erantzun euskaraz, laburki (2-3 esaldi), zer akats egin duen eta nola hobetuko lukeen. Tonua laguntzailea eta animatzailea.`
-    }]
-  };
-  const resp = await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-    body:JSON.stringify(body)
-  });
-  if(!resp.ok) throw new Error('API error');
-  const data = await resp.json();
-  return data.content.map(b=>b.type==='text'?b.text:'').join('');
 }
 
 /* ═══════════════════════════════════════════
