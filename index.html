@@ -713,7 +713,21 @@ async function checkAnswer() {
   }
 }
 
+function getApiKey() {
+  // Key stored only in memory for this session — never in the HTML file
+  if(window._apiKey) return window._apiKey;
+  const key = prompt('Sartu API gakoa AI azalpenak aktibatzeko:\n(Irakasleentzat soilik — ikasleek utzi hutsik)');
+  if(key && key.trim().startsWith('sk-')) {
+    window._apiKey = key.trim();
+    return window._apiKey;
+  }
+  return null;
+}
+
 async function getAIFeedback(value, student, mainMM, coin) {
+  const apiKey = getApiKey();
+  if(!apiKey) throw new Error('No key');
+
   const body = {
     model:'claude-sonnet-4-20250514', max_tokens:1000,
     messages:[{ role:'user', content:
@@ -732,7 +746,7 @@ Erantzun euskaraz, laburki (2-3 esaldi), zer akats egin duen eta nola hobetuko l
   };
   const resp = await fetch('https://api.anthropic.com/v1/messages',{
     method:'POST',
-    headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
     body:JSON.stringify(body)
   });
   if(!resp.ok) throw new Error('API error');
