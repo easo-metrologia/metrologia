@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metrologia — Ikaskuntza Egokitzailea</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #0f1e3d;
+  --blue:     #1a56db;
+  --blue-lt:  #eff6ff;
+  --green:    #059669;
+  --green-lt: #d1fae5;
+  --amber:    #d97706;
+  --amber-lt: #fef3c7;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-600: #4b5563;
+  --gray-800: #1f2937;
+  --white:    #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: #eef2f9;
+  color: var(--gray-800);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--navy);
+  color: white;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+.header-icon {
+  width: 44px; height: 44px;
+  background: var(--blue);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.header h1 { font-size: 1.15rem; font-weight: 700; }
+.header p  { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; }
+
+/* ── MAIN ── */
+.main {
+  flex: 1;
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.intro h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.intro p {
+  font-size: 0.92rem;
+  color: var(--gray-600);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── CARDS ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+.card-banner {
+  height: 8px;
+}
+.card-banner.blue  { background: linear-gradient(90deg, #1a56db, #3b82f6); }
+.card-banner.green { background: linear-gradient(90deg, #059669, #34d399); }
+
+.card-body {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+.card-icon.blue  { background: var(--blue-lt); }
+.card-icon.green { background: var(--green-lt); }
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.card p {
+  font-size: 0.83rem;
+  color: var(--gray-600);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.badge {
+  font-size: 0.69rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  letter-spacing: .3px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.badge-blue  { background: var(--blue-lt);  color: #1e40af; }
+.badge-green { background: var(--green-lt); color: #065f46; }
+
+.card-arrow {
+  margin-left: auto;
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  transition: transform .2s, color .2s;
+}
+.card:hover .card-arrow {
+  transform: translateX(4px);
+  color: var(--blue);
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  font-family: 'IBM Plex Mono', monospace;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-icon">📐</div>
+  <div>
+    <h1>Metrologia — Ikaskuntza Egokitzailea</h1>
+    <p>Jarduerak hautatu eta hasi lanean</p>
+  </div>
+</header>
+
+<main class="main">
+  <div class="intro">
+    <h2>Zer landu nahi duzu gaur?</h2>
+    <p>Jarduera multzo bat hautatu eta AI-ak zure erantzunak ebaluatuko ditu denbora errealean.</p>
+  </div>
+
+  <div class="cards">
+
+    <a class="card" href="alturen_kalibrea.html">
+      <div class="card-banner blue"></div>
+      <div class="card-body">
+        <div class="card-icon blue">📏</div>
+        <h3>Alturen Kalibrea</h3>
+        <p>Alturen kalibrearen erabilera eta neurketa teknikak. Irakurketak eta kalkuluak egiten ikasi.</p>
+        <div class="card-meta">
+          <span class="badge badge-blue">Neurketa</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="perdoi_geometrikoak.html">
+      <div class="card-banner green"></div>
+      <div class="card-body">
+        <div class="card-icon green">📐</div>
+        <h3>Perdoi Geometrikoak</h3>
+        <p>ISO 1101 / GD&T perdoi geometrikoen irakurketa eta interpretazioa. 30 jarduera maila desberdinetan.</p>
+        <div class="card-meta">
+          <span class="badge badge-green">30 jarduera</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer class="footer">
+  Metrologia · Ikaskuntza Egokitzailea
+</footer>
+
+</body>
+</html>
