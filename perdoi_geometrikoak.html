@@ -1157,27 +1157,24 @@ Itzuli SOILIK JSON hau (ez gehitu beste ezer, ez markdown):
     throw new Error(`API ${res.status}: ${JSON.stringify(errData)}`);
   }
   const data = await res.json();
-  console.log('Proxy response:', JSON.stringify(data).slice(0, 300));
 
-  // Handle different proxy response shapes:
-  // Shape A: full Anthropic API response → { content: [{type:'text', text:'...'}] }
-  // Shape B: proxy unwraps to string     → { text: '...' } or '...' directly
-  // Shape C: proxy returns { content: '...' } as plain string
+  // Detect API-level errors forwarded by the proxy
+  if (data.type === 'error' && data.error) {
+    throw new Error(`API errorea: ${data.error.message || JSON.stringify(data.error)}`);
+  }
+
+  // Worker normalizes Gemini response to {content:[{type:'text',text:'...'}]}
   let txt;
   if (data.content && Array.isArray(data.content)) {
-    // Shape A — standard Anthropic response
     txt = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
   } else if (data.content && typeof data.content === 'string') {
-    // Shape C
     txt = data.content;
   } else if (data.text && typeof data.text === 'string') {
-    // Shape B
     txt = data.text;
-  } else if (typeof data === 'string') {
-    txt = data;
   } else {
-    throw new Error(`Erantzun ezezaguna proxy-tik: ${JSON.stringify(data).slice(0,200)}`);
+    throw new Error(`Erantzun ezezaguna: ${JSON.stringify(data).slice(0, 200)}`);
   }
+
   txt = txt.replace(/```json\s*/g,'').replace(/```\s*/g,'').trim();
   const parsed = JSON.parse(txt);
   parsed.score  = parsed.evals.filter(e=>e.ok).length;
