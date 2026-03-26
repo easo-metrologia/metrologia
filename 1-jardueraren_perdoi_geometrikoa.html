@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. jardueraren: Tolerantzia Geometrikoa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .drawing-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .drawing-section img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        .question-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .answer-section {
+            margin: 20px 0;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            padding: 10px;
+        }
+        .incorrect {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>1. jarduerak: Tolerantzia Geometrikoa</h1>
+
+        <p><strong>Aztertu marrazki tekniko hau eta bete galderetan eskatzen dena:</strong></p>
+
+        <div class="drawing-section">
+            <img src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/42/f1/ce/42f1ce7d-acf7-4aaa-b598-8f636a4d24d1/361a026f-f692-48b9-8b2b-fef28c944779/d279778e-7c0b-4ce7-8a17-2380606adc92?sv=2025-01-05&st=2026-03-26T19%3A48%3A22Z&se=2026-03-26T20%3A48%3A22Z&sr=b&sp=r&sig=99nMEstQ2Dmvk7Xn2ohdxTYO02aZUSCfrQrYq5x%2FhfQ%3D" alt="Marrazki teknikoa: Zuzenasunaren tolerantzia">
+        </div>
+
+        <div class="question-section">
+            <h2>Galderak</h2>
+            <p><strong>1. Izendapena:</strong></p>
+            <input type="text" id="izendapena" placeholder="Idatzi zure erantzuna...">
+
+            <p><strong>2. Kontrolatutako elementua:</strong></p>
+            <input type="text" id="elementua" placeholder="Idatzi zure erantzuna...">
+
+            <p><strong>3. Erreferentziazko elementurik?</strong></p>
+            <input type="text" id="erreferentzia" placeholder="Idatzi zure erantzuna...">
+
+            <p><strong>4. Perdoi eremuaren forma:</strong></p>
+            <input type="text" id="perdoi" placeholder="Idatzi zure erantzuna...">
+
+            <p><strong>5. Kontrolatutako elementuak zer bete behar duen perdoi eremuan?</strong></p>
+            <input type="text" id="bete" placeholder="Idatzi zure erantzuna...">
+
+            <button onclick="egiaztatuErantzunak()">Egiaztatu Erantzunak</button>
+        </div>
+
+        <div class="answer-section" id="result"></div>
+    </div>
+
+    <script>
+        function normalizeString(str) {
+            return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+        }
+
+        function containsSemanticMeaning(userInput, expectedKeywords) {
+            const normalizedInput = normalizeString(userInput);
+            return expectedKeywords.some(keyword => normalizedInput.includes(normalizeString(keyword)));
+        }
+
+        function egiaztatuErantzunak() {
+            const izendapena = document.getElementById('izendapena').value;
+            const elementua = document.getElementById('elementua').value;
+            const erreferentzia = document.getElementById('erreferentzia').value;
+            const perdoi = document.getElementById('perdoi').value;
+            const bete = document.getElementById('bete').value;
+
+            let zuzenak = 0;
+            let feedback = "<h3>Zure emaitzak:</h3>";
+
+            // 1. Izendapena
+            if (containsSemanticMeaning(izendapena, ["zuzenasuna", "straightness"])) {
+                feedback += "<p class='correct'>✅ 1. Izendapena: <strong>Zuzentasuna</strong></p>";
+                zuzenak++;
+            } else {
+                feedback += "<p class='incorrect'>❌ 1. Izendapena: <strong>Zuzentasuna</strong> izan behar litzateke.</p>";
+            }
+
+            // 2. Kontrolatutako elementua
+            if (containsSemanticMeaning(elementua, ["goiko planoa", "planoaren edozein lerro", "proiekzio planoarekiko paraleloa"])) {
+                feedback += "<p class='correct'>✅ 2. Kontrolatutako elementua: <strong>Goiko planoaren edozein lerroa, proiekzio planoarekiko paraleloa dena</strong></p>";
+                zuzenak++;
+            } else {
+                feedback += "<p class='incorrect'>❌ 2. Kontrolatutako elementua: <strong>Goiko planoaren edozein lerroa, proiekzio planoarekiko paraleloa dena</strong> izan behar litzateke.</p>";
+            }
+
+            // 3. Erreferentziazko elementurik?
+            if (containsSemanticMeaning(erreferentzia, ["ez", "no", "ez dago"])) {
+                feedback += "<p class='correct'>✅ 3. Erreferentziazko elementurik?: <strong>Ez dago</strong></p>";
+                zuzenak++;
+            } else {
+                feedback += "<p class='incorrect'>❌ 3. Erreferentziazko elementurik?: <strong>Ez dago</strong> izan behar litzateke.</p>";
+            }
+
+            // 4. Perdoi eremuaren forma
+            if (containsSemanticMeaning(perdoi, ["bi lerro paralelo", "bi lerro", "lerro paralelo"]) &&
+                containsSemanticMeaning(perdoi, ["0,1", "0.1"]) &&
+                containsSemanticMeaning(perdoi, ["proiekzio planoarekiko paraleloak", "paraleloak"])) {
+                feedback += "<p class='correct'>✅ 4. Perdoi eremuaren forma: <strong>Bi lerro paralelo, t = 0,1 mm-ko tartearekin bananduta eta proiekzio planoarekiko paraleloak</strong></p>";
+                zuzenak++;
+            } else {
+                feedback += "<p class='incorrect'>❌ 4. Perdoi eremuaren forma: <strong>Bi lerro paralelo, t = 0,1 mm-ko tartearekin bananduta eta proiekzio planoarekiko paraleloak</strong> izan behar litzateke.</p>";
+            }
+
+            // 5. Kontrolatutako elementuak zer bete behar duen perdoi eremuan?
+            if (containsSemanticMeaning(bete, ["bi lerroen artean", "lerroen artean"]) &&
+                containsSemanticMeaning(bete, ["proiekzio planoarekiko paraleloa", "paraleloa"])) {
+                feedback += "<p class='correct'>✅ 5. Kontrolatutako elementuak zer bete behar duen perdoi eremuan?: <strong>Goiko planoaren edozein lerroa, proiekzio planoarekiko paraleloa dena, bi lerroen artean egotea</strong></p>";
+                zuzenak++;
+            } else {
+                feedback += "<p class='incorrect'>❌ 5. Kontrolatutako elementuak zer bete behar duen perdoi eremuan?: <strong>Goiko planoaren edozein lerroa, proiekzio planoarekiko paraleloa dena, bi lerroen artean egotea</strong> izan behar litzateke.</p>";
+            }
+
+            feedback += `<p><strong>Puntuazioa: ${zuzenak}/5</strong></p>`;
+            document.getElementById('result').innerHTML = feedback;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
